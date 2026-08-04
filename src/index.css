@@ -1,0 +1,214 @@
+@import "tailwindcss";
+
+@plugin "tailwindcss-animate";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
+
+  --animate-accordion-down: accordion-down 0.2s ease-out;
+  --animate-accordion-up: accordion-up 0.2s ease-out;
+
+  @keyframes accordion-down {
+    from {
+      height: 0;
+    }
+    to {
+      height: var(--radix-accordion-content-height);
+    }
+  }
+  @keyframes accordion-up {
+    from {
+      height: var(--radix-accordion-content-height);
+    }
+    to {
+      height: 0;
+    }
+  }
+}
+
+@utility container {
+  margin-inline: auto;
+  padding-inline: 2rem;
+  @media (width >= --theme(--breakpoint-sm)) {
+    max-width: none;
+  }
+  @media (width >= 1400px) {
+    max-width: 1400px;
+  }
+}
+
+/*
+  The default border color has changed to `currentColor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentColor);
+  }
+}
+
+@layer base {
+  :root {
+    /* Design System Dark - VendorPass™ */
+    --background: 263 27% 11%; /* #1A1423 */
+    --foreground: 0 0% 88%; /* #E0E0E0 */
+
+    --card: 258 25% 18%; /* #2A233A */
+    --card-foreground: 0 0% 100%; /* #FFFFFF */
+
+    --popover: 258 25% 18%;
+    --popover-foreground: 0 0% 100%;
+
+    --primary: 275 86% 36%; /* #6A0DAD (violeta) */
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 258 25% 25%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 258 25% 25%;
+    --muted-foreground: 263 10% 60%;
+
+    --accent: 88 50% 53%; /* #8BC34A (verde - crescimento) */
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 258 25% 25%;
+    --input: 258 25% 25%;
+    --ring: 275 86% 36%;
+
+    --radius: 0.5rem;
+
+    --chart-1: 275 86% 36%; /* Violeta */
+    --chart-2: 88 50% 53%; /* Verde */
+    --chart-3: 45 100% 51%; /* #FFC107 (âmbar - energia) */
+    --chart-4: 263 10% 60%;
+    --chart-5: 0 0% 100%;
+  }
+
+  .dark {
+    /* Forçando o mesmo tema dark sempre */
+    --background: 263 27% 11%; /* #1A1423 */
+    --foreground: 0 0% 88%; /* #E0E0E0 */
+
+    --card: 258 25% 18%; /* #2A233A */
+    --card-foreground: 0 0% 100%; /* #FFFFFF */
+
+    --popover: 258 25% 18%;
+    --popover-foreground: 0 0% 100%;
+
+    --primary: 275 86% 36%; /* #6A0DAD (violeta) */
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 258 25% 25%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 258 25% 25%;
+    --muted-foreground: 263 10% 60%;
+
+    --accent: 88 50% 53%; /* #8BC34A (verde - crescimento) */
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 258 25% 25%;
+    --input: 258 25% 25%;
+    --ring: 275 86% 36%;
+
+    --chart-1: 275 86% 36%; /* Violeta */
+    --chart-2: 88 50% 53%; /* Verde */
+    --chart-3: 45 100% 51%; /* #FFC107 (âmbar - energia) */
+    --chart-4: 263 10% 60%;
+    --chart-5: 0 0% 100%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+}
+
+/* Custom utilities for Framer Motion easings */
+:root {
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+
+  /* Spacing Tokens (multiples of 4px) */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 12px;
+  --spacing-lg: 16px;
+  --spacing-xl: 24px;
+  --spacing-2xl: 32px;
+  --spacing-3xl: 48px;
+  --spacing-4xl: 64px;
+
+  /* Border Radius Tokens */
+  --radius-sm: 0.25rem; /* 4px */
+  --radius-md: 0.5rem;  /* 8px */
+  --radius-lg: 0.75rem; /* 12px */
+
+  /* Shadow Tokens */
+  --shadow-sm: 0px 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0px 10px 15px rgba(0, 0, 0, 0.15);
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 0.15; }
+  100% { transform: scale(1.1); opacity: 0.25; }
+}
